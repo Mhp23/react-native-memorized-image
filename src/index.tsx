@@ -13,7 +13,7 @@ const MemorizedImageModule = isTurboModuleEnabled
   ? require('./NativeMemorizedImage').default
   : NativeModules.MemorizedImage;
 
-const MemorizedImage = MemorizedImageModule
+export const MemorizedImage = MemorizedImageModule
   ? MemorizedImageModule
   : new Proxy(
       {},
@@ -23,7 +23,3 @@ const MemorizedImage = MemorizedImageModule
         },
       }
     );
-
-export function multiply(a: number, b: number): Promise<number> {
-  return MemorizedImage.multiply(a, b);
-}
